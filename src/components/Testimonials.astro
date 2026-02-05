@@ -1,0 +1,57 @@
+---
+// Testimonials Section - Static Astro Component
+
+interface Testimonial {
+  id: number;
+  name: string;
+  condition: string;
+  quote: string;
+  image: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Roberto Almeida",
+    condition: "Dor Crônica",
+    quote: "Eu achava que viver com dor era minha nova realidade. A associação não me deu apenas o tratamento, me deu esperança. Hoje consigo brincar com meus netos no parque.",
+    image: "https://picsum.photos/seed/grandfather/200/200"
+  },
+  {
+    id: 2,
+    name: "Carla Mendes",
+    condition: "Ansiedade",
+    quote: "Voltei a dormir uma noite inteira depois de 5 anos. O acolhimento que recebi desde a primeira mensagem no WhatsApp fez toda a diferença. Me senti segura.",
+    image: "https://picsum.photos/seed/womancalm/200/200"
+  }
+];
+---
+
+<section id="historias" class="py-32 bg-brand-sand">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-center text-3xl font-serif text-gray-900 mb-16">Histórias de Transformação</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      {testimonials.map((t) => (
+        <div class="bg-white p-8 lg:p-12 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative">
+          <!-- Quote Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-8 right-8 text-brand-green/20 w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+            <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+          </svg>
+
+          <p class="text-gray-700 text-lg leading-relaxed mb-8 italic">
+            "{t.quote}"
+          </p>
+          <div class="flex items-center gap-4">
+            <img src={t.image} alt={t.name} class="w-14 h-14 rounded-full object-cover" />
+            <div>
+              <h4 class="font-semibold text-gray-900">{t.name}</h4>
+              <span class="text-sm text-brand-green font-medium">{t.condition}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

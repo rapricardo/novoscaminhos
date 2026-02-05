@@ -1,0 +1,65 @@
+---
+// Conditions Section - Static Astro Component
+
+interface Condition {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const conditions: Condition[] = [
+  {
+    title: "Dores Crônicas",
+    description: "Auxiliamos no manejo da dor para que você possa retomar movimentos simples e prazerosos do dia a dia, como caminhar ou abraçar quem ama.",
+    image: "https://picsum.photos/seed/relief/600/800"
+  },
+  {
+    title: "Ansiedade e Insônia",
+    description: "O reequilíbrio do sistema nervoso é fundamental para noites de sono reparador e dias mais tranquilos e produtivos.",
+    image: "https://picsum.photos/seed/sleep/600/800"
+  },
+  {
+    title: "Cuidados Paliativos",
+    description: "Oferecemos dignidade e conforto, focando na redução de sintomas para priorizar o que realmente importa: a vida e as relações.",
+    image: "https://picsum.photos/seed/holdinghands/600/800"
+  }
+];
+---
+
+<section id="quem-ajudamos" class="py-32 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-16 max-w-2xl">
+      <h2 class="text-3xl lg:text-4xl font-serif text-gray-900 mb-6">
+        Para quem busca <br/>alívio e retomada da rotina
+      </h2>
+      <p class="text-gray-600">
+        Nossos associados geralmente chegam até nós após tentarem diversos tratamentos convencionais sem o sucesso esperado. Apoiamos pacientes que convivem com:
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {conditions.map((condition) => (
+        <div class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300 h-96">
+          <img
+            src={condition.image}
+            alt={condition.title}
+            class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8 text-white">
+            <h3 class="text-2xl font-serif mb-2">{condition.title}</h3>
+            <p class="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+              {condition.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm text-gray-500 italic">
+        *Cada tratamento é único e prescrito por médico parceiro avaliador.
+      </p>
+    </div>
+  </div>
+</section>
