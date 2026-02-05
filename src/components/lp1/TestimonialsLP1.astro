@@ -1,0 +1,60 @@
+---
+/**
+ * Testimonials LP1 - Histórias de Superação
+ */
+
+interface Testimonial {
+  name: string;
+  quote: string;
+  image: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: 'Maria Helena',
+    quote: 'Eu achava que conviver com a dor seria meu normal para sempre. A terapia natural me devolveu não só o sono, mas a alegria de brincar com meus netos. Voltei a viver.',
+    image: '/images/lp1-testimonial-1.webp'
+  },
+  {
+    name: 'João Carlos',
+    quote: 'O tratamento convencional me deixava apático. Aqui encontrei uma alternativa que respeita meu corpo. A ansiedade diminuiu e recuperei meu foco no trabalho.',
+    image: '/images/lp1-testimonial-2.webp'
+  },
+  {
+    name: 'Ana Paula (Mãe do Pedro)',
+    quote: 'Ver meu filho mais calmo e interagindo mais foi o maior presente. O acolhimento da equipe da associação fez toda a diferença na nossa adaptação.',
+    image: '/images/lp1-testimonial-3.webp'
+  }
+];
+---
+
+<section id="historias" class="py-32" style="background-color: rgba(206, 217, 148, 0.1);">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-serif text-gray-900 mb-4">Transformações Reais</h2>
+      <p class="text-gray-600">Pessoas como você, que encontraram um novo caminho.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative">
+          <!-- Quote Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-6 right-6 w-8 h-8" style="color: rgba(206, 217, 148, 0.4);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+            <path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" />
+          </svg>
+
+          <p class="text-gray-700 leading-relaxed mb-6 italic">
+            "{t.quote}"
+          </p>
+          <div class="flex items-center gap-4">
+            <img src={t.image} alt={t.name} class="w-14 h-14 rounded-full object-cover" />
+            <div>
+              <h4 class="font-semibold text-gray-900">{t.name}</h4>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

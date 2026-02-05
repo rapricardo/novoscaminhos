@@ -1,0 +1,76 @@
+---
+/**
+ * Biomedicina LP2 - Seção educacional 3 colunas
+ */
+
+const pillars = [
+  {
+    icon: 'balance',
+    title: 'Homeostase',
+    text: 'Seu corpo possui um sistema responsável pelo equilíbrio de funções vitais como sono, apetite, dor e humor. Fitoativos naturais atuam como "chaves" que ativam esses receptores, ajudando a restaurar o equilíbrio interno.'
+  },
+  {
+    icon: 'shield',
+    title: 'Segurança Farmacêutica',
+    text: 'Diferente do uso recreativo, o uso terapêutico utiliza compostos padronizados (Farma-Grade), com dosagem precisa e livre de contaminantes, garantindo previsibilidade e segurança no tratamento.'
+  },
+  {
+    icon: 'person',
+    title: 'Medicina Personalizada',
+    text: 'Cada organismo é único. Por isso, nosso protocolo envolve titulação lenta e acompanhamento contínuo para encontrar a dose exata para sua necessidade clínica.'
+  }
+];
+---
+
+<section id="ciencia" class="py-32 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-serif text-gray-900 mb-4">
+        Entenda como seu corpo reage a <span class="text-[#006581]">fitoativos naturais</span>
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        O segredo não está apenas na natureza, mas dentro de você: no Sistema Endocanabinoide.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {pillars.map((pillar) => (
+        <div class="text-center p-8 bg-gray-50 rounded-2xl">
+          <div class="w-16 h-16 mx-auto mb-6 bg-[#006581]/10 rounded-full flex items-center justify-center">
+            {pillar.icon === 'balance' && (
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#006581" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 17 6-6M3 17h4v4" />
+                <path d="m17 3 4 4-6 6" />
+                <path d="M17 3h4v4" />
+                <path d="m21 21-6-6" />
+              </svg>
+            )}
+            {pillar.icon === 'shield' && (
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#006581" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            )}
+            {pillar.icon === 'person' && (
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#006581" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="5" />
+                <path d="M20 21a8 8 0 1 0-16 0" />
+              </svg>
+            )}
+          </div>
+          <h3 class="text-xl font-medium text-gray-900 mb-4">{pillar.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{pillar.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Image -->
+    <div class="max-w-3xl mx-auto">
+      <img 
+        src="/images/lp2-science-molecule.webp" 
+        alt="Ilustração sistema endocanabinoide"
+        class="w-full rounded-2xl shadow-lg"
+      />
+    </div>
+  </div>
+</section>

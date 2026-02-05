@@ -1,0 +1,76 @@
+---
+/**
+ * LPCards - Cards que direcionam para as landing pages
+ */
+
+interface LPCard {
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+}
+
+const cards: LPCard[] = [
+  {
+    title: 'Sua Jornada de Bem-Estar',
+    description: 'Para quem busca uma abordagem acolhedora e transformadora.',
+    image: '/images/card-lp1-jornada.webp',
+    href: '/jornada-terapeutica'
+  },
+  {
+    title: 'Ciência e Segurança',
+    description: 'Entenda a base científica e a regulamentação do tratamento.',
+    image: '/images/card-lp2-ciencia.webp',
+    href: '/medicina-integrativa'
+  },
+  {
+    title: 'Você Não Está Sozinho',
+    description: 'Faça parte de uma comunidade de apoio e acolhimento.',
+    image: '/images/card-lp3-comunidade.webp',
+    href: '/comunidade'
+  }
+];
+---
+
+<section class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-serif text-gray-900">
+        Encontre o caminho certo para você
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {cards.map((card) => (
+        <a 
+          href={card.href}
+          class="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img 
+              src={card.image}
+              alt={card.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-serif text-gray-900 mb-2 group-hover:text-brand-green transition-colors">
+              {card.title}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              {card.description}
+            </p>
+            <span class="inline-flex items-center gap-2 text-brand-green font-medium text-sm">
+              Conhecer
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

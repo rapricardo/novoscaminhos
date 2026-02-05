@@ -1,0 +1,56 @@
+---
+import HeroSlider from './HeroSlider';
+import CTAButtons from '../shared/CTAButtons.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-brand-sand">
+  <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-8">
+
+    <!-- Content -->
+    <div class="order-2 lg:order-1 flex flex-col gap-8 z-10 animate-fade-in-up">
+      <div class="space-y-4">
+        <span class="inline-block px-4 py-1.5 bg-brand-green/10 text-brand-green rounded-full text-xs font-semibold tracking-wider uppercase">
+          Associação autorizada pela ANVISA
+        </span>
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-serif font-medium text-gray-900 leading-tight">
+          Óleo medicinal com <span class="italic text-brand-green">acompanhamento especializado</span>
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+          Acesso legal, seguro e com suporte completo para seu tratamento. Da consulta médica à entrega em casa.
+        </p>
+      </div>
+
+      <CTAButtons variant="hero" />
+
+      <!-- Social Proof -->
+      <div class="flex items-center gap-4 pt-4 text-sm text-gray-500">
+        <div class="flex -space-x-3">
+          <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-brand-sage/30 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+            </svg>
+          </div>
+          <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-brand-sage/30 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+            </svg>
+          </div>
+          <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-brand-sage/30 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+            </svg>
+          </div>
+        </div>
+        <p>Mais de <strong class="text-gray-700">2.000 famílias</strong> atendidas.</p>
+      </div>
+    </div>
+
+    <!-- Slider -->
+    <div class="order-1 lg:order-2">
+      <HeroSlider client:load />
+    </div>
+  </div>
+</section>

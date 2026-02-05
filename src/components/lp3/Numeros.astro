@@ -1,0 +1,29 @@
+---
+/**
+ * Números LP3 - O Movimento em Números (com animação CSS simples)
+ */
+
+const stats = [
+  { number: '+10.000', label: 'Vidas Impactadas' },
+  { number: '100%', label: 'Legalizado (Anvisa)' },
+  { number: '24h', label: 'De Acolhimento e Suporte' },
+  { number: '26', label: 'Estados Alcançados' }
+];
+---
+
+<section class="py-24 bg-[#CED994]/10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <div class="text-4xl lg:text-5xl font-bold text-[#EC8323] mb-2">
+            {stat.number}
+          </div>
+          <div class="text-gray-600 text-sm font-medium">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

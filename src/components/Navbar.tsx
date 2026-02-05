@@ -1,9 +1,73 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+interface NavbarProps {
+  page?: 'home' | 'lp1' | 'lp2' | 'lp3';
+}
+
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface NavConfig {
+  links: NavLink[];
+  ctaText: string;
+  ctaHref: string;
+  ctaStyle: string;
+}
+
+const navConfigs: Record<string, NavConfig> = {
+  home: {
+    links: [
+      { label: 'Jornada Terapêutica', href: '/jornada-terapeutica' },
+      { label: 'Medicina Integrativa', href: '/medicina-integrativa' },
+      { label: 'Comunidade', href: '/comunidade' },
+    ],
+    ctaText: 'Fale Conosco',
+    ctaHref: 'https://wa.me/554891203870',
+    ctaStyle: 'bg-brand-green text-white',
+  },
+  lp1: {
+    links: [
+      { label: 'A Associação', href: '#sobre' },
+      { label: 'Histórias Reais', href: '#historias' },
+      { label: 'Como Funciona', href: '#como-funciona' },
+      { label: 'Fale Conosco', href: '#contato' },
+    ],
+    ctaText: 'Área do Associado',
+    ctaHref: '#',
+    ctaStyle: 'border border-brand-green text-brand-green hover:bg-brand-green/5',
+  },
+  lp2: {
+    links: [
+      { label: 'A Ciência', href: '#ciencia' },
+      { label: 'Corpo Clínico', href: '#especialistas' },
+      { label: 'Regulamentação', href: '#seguranca' },
+      { label: 'Perguntas', href: '#faq' },
+    ],
+    ctaText: 'Agendar Triagem',
+    ctaHref: 'https://wa.me/554891203870',
+    ctaStyle: 'bg-[#006581] text-white',
+  },
+  lp3: {
+    links: [
+      { label: 'O Movimento', href: '#manifesto' },
+      { label: 'Nossas Histórias', href: '#historias' },
+      { label: 'Benefícios', href: '#beneficios' },
+      { label: 'Eventos', href: '#eventos' },
+    ],
+    ctaText: 'Quero me Associar',
+    ctaHref: 'https://wa.me/554891203870',
+    ctaStyle: 'bg-[#EC8323] text-white',
+  },
+};
+
+const Navbar = ({ page = 'home' }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const config = navConfigs[page];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,38 +77,58 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    if (href.startsWith('#')) {
+      const element = document.getElementById(href.slice(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
+
+  const logoSrc = '/images/logo-novos-caminhos.webp';
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection('hero')}>
-          <span className={`text-xl font-serif font-semibold tracking-wide ${isScrolled ? 'text-brand-green' : 'text-brand-green'}`}>
-            Novos Caminhos
-          </span>
-        </div>
+        <a href="/" className="flex items-center gap-2">
+          <img 
+            src={logoSrc} 
+            alt="Associação Novos Caminhos" 
+            className="h-10 w-auto"
+          />
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <button onClick={() => scrollToSection('sobre')} className="text-gray-600 hover:text-brand-green transition-colors text-sm font-medium">O Que Somos</button>
-          <button onClick={() => scrollToSection('quem-ajudamos')} className="text-gray-600 hover:text-brand-green transition-colors text-sm font-medium">Quem Ajudamos</button>
-          <button onClick={() => scrollToSection('historias')} className="text-gray-600 hover:text-brand-green transition-colors text-sm font-medium">Histórias</button>
-          <button
-            onClick={() => scrollToSection('contato')}
-            className="bg-brand-green text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg"
+          {config.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => {
+                if (link.href.startsWith('#')) {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }
+              }}
+              className="text-gray-600 hover:text-brand-green transition-colors text-sm font-medium"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href={config.ctaHref}
+            target={config.ctaHref.startsWith('http') ? '_blank' : undefined}
+            rel={config.ctaHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg ${config.ctaStyle}`}
           >
-            Fale Conosco
-          </button>
+            {config.ctaText}
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -56,15 +140,29 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg p-6 flex flex-col gap-4 border-t">
-          <button onClick={() => scrollToSection('sobre')} className="text-left text-gray-600 font-medium">O Que Somos</button>
-          <button onClick={() => scrollToSection('quem-ajudamos')} className="text-left text-gray-600 font-medium">Quem Ajudamos</button>
-          <button onClick={() => scrollToSection('historias')} className="text-left text-gray-600 font-medium">Histórias</button>
-          <button
-            onClick={() => scrollToSection('contato')}
-            className="bg-brand-green text-white px-6 py-3 rounded-lg text-center font-medium"
+          {config.links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => {
+                if (link.href.startsWith('#')) {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }
+              }}
+              className="text-left text-gray-600 font-medium"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href={config.ctaHref}
+            target={config.ctaHref.startsWith('http') ? '_blank' : undefined}
+            rel={config.ctaHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className={`px-6 py-3 rounded-lg text-center font-medium ${config.ctaStyle}`}
           >
-            Fale Conosco
-          </button>
+            {config.ctaText}
+          </a>
         </div>
       )}
     </nav>

@@ -1,0 +1,33 @@
+---
+import CTAButtons from '../shared/CTAButtons.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/images/lp3-hero.webp" 
+      alt="Comunidade diversa ao ar livre"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 w-full py-20">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl lg:text-5xl xl:text-6xl font-serif font-medium text-white leading-tight mb-6">
+        Você não está sozinho na sua busca por <span class="italic text-[#CED994]">saúde</span>
+      </h1>
+      <p class="text-xl text-white/90 leading-relaxed mb-8">
+        Junte-se a uma comunidade de milhares de pessoas que encontraram alívio, acolhimento e novos caminhos através da medicina integrativa.
+      </p>
+
+      <CTAButtons variant="hero" className="[&_a]:bg-[#EC8323] [&_a]:hover:bg-[#d97520] [&_a:first-child]:text-white [&_a:last-child]:border-white [&_a:last-child]:text-white" />
+
+      <!-- Social Proof -->
+      <div class="mt-8 text-white/80">
+        <p class="text-lg">Junte-se a mais de <strong class="text-white">5.000 famílias</strong> acolhidas.</p>
+      </div>
+    </div>
+  </div>
+</section>

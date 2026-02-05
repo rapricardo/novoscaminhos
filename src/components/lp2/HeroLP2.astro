@@ -1,0 +1,40 @@
+---
+import CTAButtons from '../shared/CTAButtons.astro';
+---
+
+<section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#F5F7FA]">
+  <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-8">
+
+    <!-- Content -->
+    <div class="order-2 lg:order-1 flex flex-col gap-8 z-10 animate-fade-in-up">
+      <div class="space-y-4">
+        <span class="inline-block px-4 py-1.5 bg-[#006581]/10 text-[#006581] rounded-full text-xs font-semibold tracking-wider uppercase">
+          Medicina Integrativa Regulamentada
+        </span>
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-serif font-medium text-gray-900 leading-tight">
+          A ciência a favor da sua <span class="italic text-[#006581]">saúde e equilíbrio</span>
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-lg">
+          Tratamentos naturais baseados em evidência clínica e regulamentados pela ANVISA (RDC 660). Acesso seguro, legal e com acompanhamento especializado.
+        </p>
+        <p class="text-sm text-gray-500 italic">
+          *Atendimento autorizado mediante prescrição médica.
+        </p>
+      </div>
+
+      <CTAButtons variant="hero" />
+    </div>
+
+    <!-- Image -->
+    <div class="order-1 lg:order-2 relative h-[400px] lg:h-[600px] w-full">
+      <div class="absolute inset-0 rounded-[2rem] overflow-hidden shadow-2xl">
+        <img
+          src="/images/lp2-hero.webp"
+          alt="Médico conversando com paciente - escuta ativa"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+    </div>
+  </div>
+</section>

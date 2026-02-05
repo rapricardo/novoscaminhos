@@ -1,0 +1,66 @@
+---
+/**
+ * Histórias LP3 - Jornadas Reais (Thumbnails estilo documentário)
+ */
+
+const stories = [
+  {
+    title: 'A solidão da dor crônica acabou.',
+    person: 'Carlos, paciente há 2 anos.',
+    summary: 'Carlos conta como a comunidade o ajudou a entender seus direitos e a encontrar um médico que realmente o escutou.',
+    image: '/images/lp3-testimonial-video-1.webp'
+  },
+  {
+    title: 'Lutei pela saúde da minha filha e venci.',
+    person: 'Juliana, mãe atípica.',
+    summary: 'A jornada de uma mãe contra a burocracia e como a assessoria jurídica da associação simplificou tudo.',
+    image: '/images/lp3-testimonial-video-2.webp'
+  }
+];
+---
+
+<section id="historias" class="py-32 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-serif text-gray-900 mb-4">Histórias que nos movem</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {stories.map((story) => (
+        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+          <!-- Thumbnail -->
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src={story.image} 
+              alt={story.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors"></div>
+            <!-- Play Button -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#005742" stroke="none">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="text-xl font-serif text-gray-900 mb-2">"{story.title}"</h3>
+            <p class="text-[#EC8323] font-medium text-sm mb-3">{story.person}</p>
+            <p class="text-gray-600 text-sm mb-4">{story.summary}</p>
+            <button class="inline-flex items-center gap-2 text-[#005742] font-medium text-sm hover:underline">
+              Assistir História
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

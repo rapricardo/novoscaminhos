@@ -1,0 +1,89 @@
+---
+/**
+ * CTAButtons - Componente reutilizável para CTAs padrão do site
+ * 
+ * Props:
+ * - variant: 'hero' | 'footer' | 'section'
+ * - showSecondary: boolean (mostrar botão secundário)
+ */
+
+interface Props {
+  variant?: 'hero' | 'footer' | 'section';
+  showSecondary?: boolean;
+  className?: string;
+}
+
+const { variant = 'hero', showSecondary = true, className = '' } = Astro.props;
+
+const whatsappNumber = '554891203870';
+
+// Mensagens codificadas para WhatsApp
+const messagePrimary = encodeURIComponent('Olá! Já tenho receita médica e gostaria de informações sobre como acessar o óleo medicinal.');
+const messageSecondary = encodeURIComponent('Olá! Gostaria de agendar uma consulta para avaliação médica.');
+const messageFooter = encodeURIComponent('Olá! Gostaria de saber mais sobre a Associação Novos Caminhos.');
+
+const primaryLink = `https://wa.me/${whatsappNumber}?text=${messagePrimary}`;
+const secondaryLink = `https://wa.me/${whatsappNumber}?text=${messageSecondary}`;
+const footerLink = `https://wa.me/${whatsappNumber}?text=${messageFooter}`;
+---
+
+{variant === 'hero' && (
+  <div class={`flex flex-col sm:flex-row gap-4 ${className}`}>
+    <a
+      href={primaryLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      onclick="gtag_report_conversion()"
+      class="group flex items-center justify-center gap-3 bg-brand-green text-white px-8 py-4 rounded-full text-base font-medium transition-all hover:bg-opacity-90 hover:shadow-lg"
+    >
+      Já tenho receita
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </a>
+    {showSecondary && (
+      <a
+        href={secondaryLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="gtag_report_conversion()"
+        class="flex items-center justify-center px-8 py-4 rounded-full text-brand-green border border-brand-green/30 hover:bg-brand-green/5 transition-colors font-medium"
+      >
+        Quero marcar consulta
+      </a>
+    )}
+  </div>
+)}
+
+{variant === 'footer' && (
+  <a
+    href={footerLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    onclick="gtag_report_conversion()"
+    class={`bg-brand-gold text-brand-green font-bold px-8 py-4 rounded-full flex items-center gap-2 hover:bg-white transition-colors ${className}`}
+  >
+    Falar no WhatsApp
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </svg>
+  </a>
+)}
+
+{variant === 'section' && (
+  <a
+    href={footerLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    onclick="gtag_report_conversion()"
+    class={`inline-flex items-center justify-center gap-2 bg-white text-brand-green font-bold px-8 py-4 rounded-full hover:bg-opacity-90 transition-colors ${className}`}
+  >
+    Falar no WhatsApp
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </svg>
+  </a>
+)}

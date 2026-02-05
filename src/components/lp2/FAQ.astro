@@ -1,0 +1,55 @@
+---
+/**
+ * FAQ LP2 - Perguntas Frequentes (Accordion)
+ */
+
+const faqs = [
+  {
+    question: 'É legal fazer esse tratamento no Brasil?',
+    answer: 'Sim. Desde 2015, a ANVISA regulamenta a importação e uso terapêutico mediante prescrição médica e autorização sanitária.'
+  },
+  {
+    question: 'O tratamento tem efeitos psicoativos?',
+    answer: 'Não necessariamente. As terapias medicinais utilizam formulações ricas em fitoativos não-intoxicantes, focados no alívio de sintomas sem alterar a consciência.'
+  },
+  {
+    question: 'Para quais condições é indicado?',
+    answer: 'A indicação depende de avaliação médica, sendo comumente utilizado como terapia adjuvante em dores crônicas, condições neurológicas e transtornos de ansiedade.'
+  }
+];
+---
+
+<section id="faq" class="py-32 bg-white">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-serif text-gray-900 mb-4">Perguntas Frequentes</h2>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="group bg-gray-50 rounded-xl overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-100 transition-colors">
+            <span class="font-medium text-gray-900 text-left">{faq.question}</span>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round"
+              class="flex-shrink-0 ml-4 text-gray-500 group-open:rotate-180 transition-transform"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
