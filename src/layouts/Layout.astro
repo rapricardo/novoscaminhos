@@ -51,26 +51,25 @@ const { title, page = 'home', description = 'Associação Novos Caminhos - Acess
             e.preventDefault();
             var href = this.href;
             var target = this.target;
-            
-            gtag('event', 'conversion', {
-              'send_to': 'AW-16836757969/8l3MCMGoo7MbENGTstw-',
-              'event_callback': function() {
-                if (target === '_blank') {
-                  window.open(href, '_blank');
-                } else {
-                  window.location.href = href;
-                }
-              }
-            });
-            
-            // Fallback: se o callback não executar em 1s, abre mesmo assim
-            setTimeout(function() {
+            var handled = false;
+
+            function goToWhatsApp() {
+              if (handled) return;
+              handled = true;
               if (target === '_blank') {
                 window.open(href, '_blank');
               } else {
                 window.location.href = href;
               }
-            }, 1000);
+            }
+            
+            gtag('event', 'conversion', {
+              'send_to': 'AW-16836757969/8l3MCMGoo7MbENGTstw-',
+              'event_callback': goToWhatsApp
+            });
+            
+            // Fallback: se o callback não executar em 1s, abre mesmo assim
+            setTimeout(goToWhatsApp, 1000);
           });
         });
       });
